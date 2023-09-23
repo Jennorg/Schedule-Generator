@@ -13,11 +13,6 @@ public class Reservation {
     //Constructor
     public Reservation(LocalTime beginTime, LocalTime endTime, Place place, Professor professor, String campus) {
         
-        /*
-        *   Aqui la validacion
-        *   con Try-catch
-        */
-        
         this.beginTime = beginTime;
         this.endTime = endTime;
         this.place = place;
@@ -65,6 +60,14 @@ public class Reservation {
         this.campus = campus;
     }
     
-    //Aqui el metodo que comprueba si ya existe una reserva en el intervalo del constructor
-    //Deberia de estar la ejecucion de esta funcion dentro del constructor
+    public boolean isValidTime(LocalTime begin, LocalTime end) {
+        /*llamas a esta funcion en la creacion del horario para comprobar si el tiempo asignado a
+        la reservacion recien creado coincide con los tiempos de la reserva con un foreach para
+        recorrer todo el array*/
+        
+        if(begin == beginTime) return false;
+        if(begin.isBefore(endTime) && begin.isAfter(beginTime)) return false;        
+                
+        return true;
+    }
 }
