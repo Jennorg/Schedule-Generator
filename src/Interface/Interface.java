@@ -4,7 +4,16 @@
  */
 
 
+
 package Interface;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.imageio.ImageIO;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -160,6 +169,11 @@ public class Interface extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton3.setText("Exportar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -278,6 +292,36 @@ public class Interface extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Codigo para tomar captura de pantalla al contenido del panel del Horario:
+        try{
+  
+            //Calcula las dimensiones del panel
+            int PanelWidth = jScrollPane1.getWidth();
+            int PanelHeight = jScrollPane1.getHeight();        
+            
+            //Crea una imagen del mismo tamanio que el panel
+            BufferedImage screenshot = new BufferedImage(PanelWidth, PanelHeight, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2 = screenshot.createGraphics();
+            
+            // dibuja la tabla en la imagen y libera recursos
+            jScrollPane1.print(g2);
+            g2.dispose();
+            
+            //Generar un nombre unico basado en la fecha y la hora actual
+            
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyMMdd_HHmmss");
+            String timestamp = dateFormat.format(new Date());
+            String filename = "Schedule" + timestamp + ".png";
+            
+            // Guarda la imagen en un archivo con el nombre generado
+            File outputFile = new File(filename);
+            ImageIO.write(screenshot, "png", outputFile);
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     /**
