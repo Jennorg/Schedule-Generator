@@ -4,8 +4,18 @@
  */
 
 
+
 package Interface;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import Handler.Schedule;
 
 /**
@@ -36,7 +46,7 @@ public class Interface extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        LapsoAcademico = new javax.swing.JComboBox<>();
         jComboBox5 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -52,6 +62,7 @@ public class Interface extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(80, 128, 128));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre 1", "Semestre 2", "Semestre 3", "Semestre 4" }));
         jComboBox1.setName("Semestres"); // NOI18N
@@ -69,11 +80,11 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lapso 2023-II", "+ Añadir Lapso Académico" }));
-        jComboBox4.setName("Semestres"); // NOI18N
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+        LapsoAcademico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lapso 2023-II", "+ Nuevo Lapso" }));
+        LapsoAcademico.setName("Semestres"); // NOI18N
+        LapsoAcademico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
+                LapsoAcademicoActionPerformed(evt);
             }
         });
 
@@ -169,6 +180,11 @@ public class Interface extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton3.setText("Exportar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,7 +203,7 @@ public class Interface extends javax.swing.JFrame {
                         .addGap(93, 93, 93)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LapsoAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82)
@@ -215,7 +231,7 @@ public class Interface extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LapsoAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -256,6 +272,44 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
+    private void LapsoAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LapsoAcademicoActionPerformed
+        // TODO add your handling code here:
+        String selection = (String) LapsoAcademico.getSelectedItem();
+        
+        if ("+ Nuevo Lapso".equals(selection)){
+            
+            int opcion = JOptionPane.showConfirmDialog(null, """
+                                                             Esta acción eliminará todos los horarios almacenados del lapso actual para crear uno nuevo.
+                                                             Estás seguro que quieres continuar?""","Confirmación", JOptionPane.YES_NO_OPTION);
+            
+            if (opcion == JOptionPane.YES_OPTION){
+                
+                DefaultComboBoxModel<String> modeloComboBox = (DefaultComboBoxModel<String>) jComboBox2.getModel();
+                
+                for(int i = 0; i < modeloComboBox.getSize();i++){
+                   jComboBox2.removeItemAt(i);
+                }
+                
+                String nuevaOpcion = "Lapso "+(JOptionPane.showInputDialog(this,"Ingrese el año y número del siguiente Lapso\n\"2023-I\", \"2024-II\" "));
+            
+            
+                if (nuevaOpcion != null && !nuevaOpcion.isEmpty()){
+
+                    String BorrarLapso = (String) LapsoAcademico.getItemAt(0);
+
+                    LapsoAcademico.removeItem(BorrarLapso);
+
+                    LapsoAcademico.insertItemAt(nuevaOpcion, 0);
+
+                    LapsoAcademico.setSelectedItem(nuevaOpcion);
+
+                }
+            
+            }else{
+                
+            }
+        }
+    }//GEN-LAST:event_LapsoAcademicoActionPerformed
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
 
     }//GEN-LAST:event_jComboBox4ActionPerformed
@@ -291,6 +345,36 @@ public class Interface extends javax.swing.JFrame {
 
     private void ReservarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReservarMouseClicked
     }//GEN-LAST:event_ReservarMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Codigo para tomar captura de pantalla al contenido del panel del Horario:
+        try{
+  
+            //Calcula las dimensiones del panel
+            int PanelWidth = jScrollPane1.getWidth();
+            int PanelHeight = jScrollPane1.getHeight();        
+            
+            //Crea una imagen del mismo tamanio que el panel
+            BufferedImage screenshot = new BufferedImage(PanelWidth, PanelHeight, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2 = screenshot.createGraphics();
+            
+            // dibuja la tabla en la imagen y libera recursos
+            jScrollPane1.print(g2);
+            g2.dispose();
+            
+            //Generar un nombre unico basado en la fecha y la hora actual
+            
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyMMdd_HHmmss");
+            String timestamp = dateFormat.format(new Date());
+            String filename = "Schedule" + timestamp + ".png";
+            
+            // Guarda la imagen en un archivo con el nombre generado
+            File outputFile = new File(filename);
+            ImageIO.write(screenshot, "png", outputFile);
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     /**
@@ -329,6 +413,9 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
+    private javax.swing.JComboBox<String> LapsoAcademico;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton Reservar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -339,7 +426,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
