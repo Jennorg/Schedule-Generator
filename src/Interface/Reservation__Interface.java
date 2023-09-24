@@ -417,10 +417,11 @@ public class Reservation__Interface extends javax.swing.JFrame {
         Reservation reservation = new Reservation(
             LocalTime.of(bHour, bMinute), 
             LocalTime.of(eHour, eMinute),
-            classroom, name, campus, day, subject                
+            classroom, name, campus, day, subject, section                
         );
         
         frame.schedule.addReservation(reservation);
+        System.out.println(reservation.toString());
         frame.showReserve(reservation);
         this.dispose();
     }//GEN-LAST:event_SaveButtonActionPerformed
