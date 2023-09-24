@@ -13,6 +13,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,7 +43,7 @@ public class Interface extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        LapsoAcademico = new javax.swing.JComboBox<>();
         jComboBox5 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -57,6 +59,7 @@ public class Interface extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(80, 128, 128));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre 1", "Semestre 2", "Semestre 3", "Semestre 4" }));
         jComboBox1.setName("Semestres"); // NOI18N
@@ -74,11 +77,11 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lapso 2023-II", "+ Añadir Lapso Académico" }));
-        jComboBox4.setName("Semestres"); // NOI18N
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+        LapsoAcademico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lapso 2023-II", "+ Nuevo Lapso" }));
+        LapsoAcademico.setName("Semestres"); // NOI18N
+        LapsoAcademico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
+                LapsoAcademicoActionPerformed(evt);
             }
         });
 
@@ -192,7 +195,7 @@ public class Interface extends javax.swing.JFrame {
                         .addGap(93, 93, 93)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LapsoAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82)
@@ -220,7 +223,7 @@ public class Interface extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LapsoAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -261,9 +264,44 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+    private void LapsoAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LapsoAcademicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4ActionPerformed
+        String selection = (String) LapsoAcademico.getSelectedItem();
+        
+        if ("+ Nuevo Lapso".equals(selection)){
+            
+            int opcion = JOptionPane.showConfirmDialog(null, """
+                                                             Esta acción eliminará todos los horarios almacenados del lapso actual para crear uno nuevo.
+                                                             Estás seguro que quieres continuar?""","Confirmación", JOptionPane.YES_NO_OPTION);
+            
+            if (opcion == JOptionPane.YES_OPTION){
+                
+                DefaultComboBoxModel<String> modeloComboBox = (DefaultComboBoxModel<String>) jComboBox2.getModel();
+                
+                for(int i = 0; i < modeloComboBox.getSize();i++){
+                   jComboBox2.removeItemAt(i);
+                }
+                
+                String nuevaOpcion = "Lapso "+(JOptionPane.showInputDialog(this,"Ingrese el año y número del siguiente Lapso\n\"2023-I\", \"2024-II\" "));
+            
+            
+                if (nuevaOpcion != null && !nuevaOpcion.isEmpty()){
+
+                    String BorrarLapso = (String) LapsoAcademico.getItemAt(0);
+
+                    LapsoAcademico.removeItem(BorrarLapso);
+
+                    LapsoAcademico.insertItemAt(nuevaOpcion, 0);
+
+                    LapsoAcademico.setSelectedItem(nuevaOpcion);
+
+                }
+            
+            }else{
+                
+            }
+        }
+    }//GEN-LAST:event_LapsoAcademicoActionPerformed
 
     private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
         // TODO add your handling code here:
@@ -360,6 +398,7 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> LapsoAcademico;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -370,7 +409,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
