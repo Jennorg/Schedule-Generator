@@ -1,8 +1,9 @@
 package Handler;
 
 import Users.Person;
+import java.io.*;
 
-public class Place {
+public class Place implements Serializable {
     private String name;
     private boolean avaiable;
     private int number;

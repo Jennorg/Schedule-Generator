@@ -6,7 +6,9 @@ package Interface;
 
 import Handler.Place;
 import Handler.Reservation;
+import Handler.Schedule;
 import Users.Professor;
+import java.io.IOException;
 import java.time.LocalTime;
 import java.util.Arrays;
 import javax.swing.DefaultComboBoxModel;
@@ -421,6 +423,17 @@ public class Reservation__Interface extends javax.swing.JFrame {
         );
         
         frame.schedule.addReservation(reservation);
+        
+        /*
+        try{
+            frame.schedule.serialize("GuardadoReservas");
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        */
+        
+        
         this.dispose();
     }//GEN-LAST:event_SaveButtonActionPerformed
 

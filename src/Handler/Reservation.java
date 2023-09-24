@@ -2,8 +2,12 @@ package Handler;
 
 import Users.Professor;
 import java.time.LocalTime;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
-public class Reservation {
+public class Reservation implements Serializable{
     private LocalTime beginTime;
     private LocalTime endTime;
     private Place place;
@@ -70,4 +74,8 @@ public class Reservation {
                 
         return true;
     }
+    
+    
+   
+
 }
