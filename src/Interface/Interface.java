@@ -7,8 +7,11 @@
 
 package Interface;
 
+<<<<<<< HEAD
 import static Handler.DatosAcademicos.data;
 import static Handler.DatosAcademicos.temp;
+=======
+>>>>>>> 3e382355926cf5bce371fde28d41ffe433d1116b
 import Handler.Reservation;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,9 +23,15 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Handler.Schedule;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+=======
+import java.time.format.DateTimeFormatter;
+import static java.time.temporal.TemporalQueries.localTime;
+import javax.swing.table.TableColumn;
+>>>>>>> 3e382355926cf5bce371fde28d41ffe433d1116b
 
 /**
  *
@@ -37,8 +46,34 @@ public class Interface extends javax.swing.JFrame {
      */
     public Interface() {
         initComponents();
+        
+        TableColumn firstColumn = table.getColumnModel().getColumn(0);
+        firstColumn.setPreferredWidth(1);
+        
     }
 
+    public void showReserve(Reservation reservation) {
+        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String horaBuscada = reservation.getBeginTime().format(formatter);
+
+        String diaBuscado = reservation.getDay();
+        Object nuevoValor = reservation.toString();
+        
+        for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+            for(int col = 0; col < modelo.getColumnCount(); col++) {
+                
+                String horaEnTabla = (String) modelo.getValueAt(fila, 0);
+                String diaEnTabla = (String) modelo.getColumnName(col);
+                if (horaEnTabla.equals(horaBuscada) && diaEnTabla.equals(diaBuscado)) {                    
+                    modelo.setValueAt(nuevoValor, fila, col); 
+                    modelo.fireTableDataChanged();
+                    break;                         
+               }
+            }
+        }        
+    }
+    
     /**
      * This method is called from within the
      * constructor to initialize the form.
@@ -50,8 +85,13 @@ public class Interface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         Semestres = new javax.swing.JComboBox<>();
         ProyectoDeCarrera = new javax.swing.JComboBox<>();
+=======
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
+>>>>>>> 3e382355926cf5bce371fde28d41ffe433d1116b
         LapsoAcademico = new javax.swing.JComboBox<>();
         jComboBox5 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -64,7 +104,7 @@ public class Interface extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -164,25 +204,39 @@ public class Interface extends javax.swing.JFrame {
         jButton2.setText("Iniciar Sesión");
 
         jScrollPane1.setBackground(new java.awt.Color(150, 245, 245));
+        jScrollPane1.setToolTipText("");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {"07:00", null, null, null, null, null},
+                {"07:30", null, null, null, null, null},
+                {"08:00", null, null, null, null, null},
+                {"08:30", null, null, null, null, null},
+                {"09:00", null, null, null, null, null},
+                {"09:30", null, null, null, null, null},
+                {"10:00", null, null, null, null, null},
+                {"10:30", null, null, null, null, null},
+                {"11:00", null, null, null, null, null},
+                {"11:30", null, null, null, null, null},
+                {"12:00", null, null, null, null, null},
+                {"12:30", null, null, null, null, null},
+                {"13:00", null, null, null, null, null},
+                {"13:30", null, null, null, null, null},
+                {"14:00", null, null, null, null, null},
+                {"14:30", null, null, null, null, null},
+                {"15:00", null, null, null, null, null},
+                {"15:30", null, null, null, null, null},
+                {"16:00", null, null, null, null, null},
+                {"16:30", null, null, null, null, null},
+                {"17:00", null, null, null, null, null},
+                {"17:30", null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+                "Hora", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        table.setRowSelectionAllowed(false);
+        jScrollPane1.setViewportView(table);
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton3.setText("Exportar");
@@ -225,7 +279,7 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(49, 49, 49)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 973, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
                         .addContainerGap(51, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -235,8 +289,13 @@ public class Interface extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< HEAD
                             .addComponent(Semestres, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ProyectoDeCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 3e382355926cf5bce371fde28d41ffe433d1116b
                             .addComponent(LapsoAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -316,6 +375,32 @@ public class Interface extends javax.swing.JFrame {
             
                 if (nuevaOpcion != null && !nuevaOpcion.isEmpty()){
 
+<<<<<<< HEAD
+=======
+    private void LapsoAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LapsoAcademicoActionPerformed
+        // TODO add your handling code here:
+        String selection = (String) LapsoAcademico.getSelectedItem();
+        
+        if ("+ Nuevo Lapso".equals(selection)){
+            
+            int opcion = JOptionPane.showConfirmDialog(null, """
+                                                             Esta acción eliminará todos los horarios almacenados del lapso actual para crear uno nuevo.
+                                                             Estás seguro que quieres continuar?""","Confirmación", JOptionPane.YES_NO_OPTION);
+            
+            if (opcion == JOptionPane.YES_OPTION){
+                
+                DefaultComboBoxModel<String> modeloComboBox = (DefaultComboBoxModel<String>) jComboBox2.getModel();
+                
+                for(int i = 0; i < modeloComboBox.getSize();i++){
+                   jComboBox2.removeItemAt(i);
+                }
+                
+                String nuevaOpcion = "Lapso "+(JOptionPane.showInputDialog(this,"Ingrese el año y número del siguiente Lapso\n\"2023-I\", \"2024-II\" "));
+            
+            
+                if (nuevaOpcion != null && !nuevaOpcion.isEmpty()){
+
+>>>>>>> 3e382355926cf5bce371fde28d41ffe433d1116b
                     String BorrarLapso = (String) LapsoAcademico.getItemAt(0);
 
                     LapsoAcademico.removeItem(BorrarLapso);
@@ -435,7 +520,10 @@ public class Interface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> LapsoAcademico;
+<<<<<<< HEAD
     private javax.swing.JComboBox<String> ProyectoDeCarrera;
+=======
+>>>>>>> 3e382355926cf5bce371fde28d41ffe433d1116b
     private javax.swing.JButton Reservar;
     private javax.swing.JComboBox<String> Semestres;
     private javax.swing.JButton jButton2;
@@ -445,10 +533,14 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JComboBox<String> jComboBox2;
+<<<<<<< HEAD
+=======
+    private javax.swing.JComboBox<String> jComboBox3;
+>>>>>>> 3e382355926cf5bce371fde28d41ffe433d1116b
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
