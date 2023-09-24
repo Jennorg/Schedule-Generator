@@ -17,6 +17,9 @@ public class Professor extends Person {
         this.subjects = subjects;
     }
     
-    //Aqui los metodos especificos del profesor
+    @Override
+    public String toString(){
+        return (getName() + " " + getLastName());
+    }
 }
 // Prueba git

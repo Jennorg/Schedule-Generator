@@ -4,7 +4,11 @@
  */
 package Interface;
 
+import Handler.Place;
 import Handler.Reservation;
+import Users.Professor;
+import java.util.Arrays;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -13,16 +17,47 @@ import Handler.Reservation;
 public class Reservation__Interface extends javax.swing.JFrame {
 
     Interface frame;
+    Place[] places = {
+        new Place ("Aula", true, 1),
+        new Place ("Aula", true, 2),
+        new Place ("Aula", true, 3),
+        new Place ("Aula", true, 4),
+        new Place ("Aula", true, 5),
+    };
+    DefaultComboBoxModel<Place> modelClassroom = new DefaultComboBoxModel<>();
     
+    Professor[] professors = {
+        new Professor("Edian", "Sanchez", "Masculino", 19),
+        new Professor("Christian", "Vazquez", "Masculino", 19),
+        new Professor("Andrew", "Puerta", "Masculino", 19),
+        new Professor("Miguel", "Nunez", "Masculino", 19),
+        new Professor("Jenfer", "Martinez", "Masculino", 18),
+    };
+    
+    DefaultComboBoxModel<Professor> modelProfessor = new DefaultComboBoxModel<>();
     /**
      * Creates new form Reservation__Interface
      */
     public Reservation__Interface(Interface panel) {
         this.frame = panel;
+        for (Place place : places) {
+            modelClassroom.addElement(place);
+        }
+        for (Professor professor : professors) {
+            modelProfessor.addElement(professor);
+        }
+        
         initComponents();
     }
     
-    public Reservation__Interface() {
+    public Reservation__Interface() {        
+        for (Place place : places) {
+            modelClassroom.addElement(place);
+        }
+        
+        for (Professor professor : professors) {
+            modelProfessor.addElement(professor);
+        }
         initComponents();
     }
 
@@ -38,6 +73,7 @@ public class Reservation__Interface extends javax.swing.JFrame {
     private void initComponents() {
 
         jSlider1 = new javax.swing.JSlider();
+        section_Field = new javax.swing.JComboBox<>();
         Panel = new javax.swing.JPanel();
         SaveButton = new javax.swing.JButton();
         Asignatura = new javax.swing.JLabel();
@@ -45,9 +81,7 @@ public class Reservation__Interface extends javax.swing.JFrame {
         date = new javax.swing.JLabel();
         Information = new javax.swing.JLabel();
         to = new javax.swing.JLabel();
-        subjectName_Field = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        section_Field = new javax.swing.JComboBox<>();
         campus_Field = new javax.swing.JComboBox<>();
         classroom_Field = new javax.swing.JComboBox<>();
         day_Field = new javax.swing.JComboBox<>();
@@ -57,8 +91,25 @@ public class Reservation__Interface extends javax.swing.JFrame {
         endHour_Field = new javax.swing.JComboBox<>();
         endMinute_Field = new javax.swing.JComboBox<>();
         professorName_Field = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        subjectName_Field = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setFocusableWindowState(false);
+        setLocation(new java.awt.Point(350, 100));
+        setUndecorated(true);
+        setResizable(false);
+
+        section_Field.setBackground(new java.awt.Color(255, 255, 255));
+        section_Field.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        section_Field.setForeground(new java.awt.Color(0, 0, 0));
+        section_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        section_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                section_FieldActionPerformed(evt);
+            }
+        });
 
         Panel.setBackground(new java.awt.Color(0, 102, 255));
         Panel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -153,13 +204,6 @@ public class Reservation__Interface extends javax.swing.JFrame {
         to.setForeground(new java.awt.Color(0, 0, 0));
         to.setText("a");
 
-        subjectName_Field.setBackground(new java.awt.Color(255, 255, 255));
-        subjectName_Field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subjectName_FieldActionPerformed(evt);
-            }
-        });
-
         jPanel4.setBackground(new java.awt.Color(0, 102, 255));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -173,16 +217,6 @@ public class Reservation__Interface extends javax.swing.JFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        section_Field.setBackground(new java.awt.Color(255, 255, 255));
-        section_Field.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        section_Field.setForeground(new java.awt.Color(0, 0, 0));
-        section_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SECCION 1", "SECCION 2", "SECCION 3", "SECCION 4", "SECCION 5" }));
-        section_Field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                section_FieldActionPerformed(evt);
-            }
-        });
-
         campus_Field.setBackground(new java.awt.Color(255, 255, 255));
         campus_Field.setEditable(true);
         campus_Field.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -192,7 +226,7 @@ public class Reservation__Interface extends javax.swing.JFrame {
         classroom_Field.setBackground(new java.awt.Color(255, 255, 255));
         classroom_Field.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         classroom_Field.setForeground(new java.awt.Color(0, 0, 0));
-        classroom_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AULA 1", "AULA 2", "AULA 3", "AULA 4", "AULA 5" }));
+        classroom_Field.setModel(modelClassroom);
 
         day_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" }));
         day_Field.addActionListener(new java.awt.event.ActionListener() {
@@ -246,10 +280,19 @@ public class Reservation__Interface extends javax.swing.JFrame {
             }
         });
 
-        professorName_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Christian", "Andrew", "Edian" }));
+        professorName_Field.setModel(modelProfessor);
         professorName_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 professorName_FieldActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setBackground(java.awt.Color.black);
+        jLabel1.setText("Seccion");
+
+        subjectName_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subjectName_FieldActionPerformed(evt);
             }
         });
 
@@ -268,9 +311,9 @@ public class Reservation__Interface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Information)
-                            .addComponent(subjectName_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47))
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(subjectName_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(71, 71, 71))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(beginHour_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(beginMinute_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,6 +328,10 @@ public class Reservation__Interface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(day_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(211, 211, 211)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -292,8 +339,8 @@ public class Reservation__Interface extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(20, 20, 20)
                             .addComponent(campus_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addComponent(section_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(122, 122, 122)
+                            .addComponent(section_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(50, 50, 50)
                             .addComponent(classroom_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -307,10 +354,12 @@ public class Reservation__Interface extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Information1)
                     .addComponent(Information))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(subjectName_Field)
-                    .addComponent(professorName_Field, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                    .addComponent(professorName_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(subjectName_Field, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                        .addGap(8, 8, 8)))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(beginHour_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,7 +369,9 @@ public class Reservation__Interface extends javax.swing.JFrame {
                     .addComponent(endHour_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(endMinute_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(day_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -328,10 +379,11 @@ public class Reservation__Interface extends javax.swing.JFrame {
                     .addGap(189, 189, 189)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(campus_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(section_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(10, 10, 10)
-                            .addComponent(classroom_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(section_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(classroom_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGap(72, 72, 72)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
@@ -384,10 +436,6 @@ public class Reservation__Interface extends javax.swing.JFrame {
        
     }//GEN-LAST:event_PanelMousePressed
 
-    private void subjectName_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectName_FieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_subjectName_FieldActionPerformed
-
     private void section_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_section_FieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_section_FieldActionPerformed
@@ -415,6 +463,10 @@ public class Reservation__Interface extends javax.swing.JFrame {
     private void professorName_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorName_FieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_professorName_FieldActionPerformed
+
+    private void subjectName_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectName_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subjectName_FieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -461,14 +513,15 @@ public class Reservation__Interface extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> beginHour_Field;
     private javax.swing.JComboBox<String> beginMinute_Field;
     private javax.swing.JComboBox<String> campus_Field;
-    private javax.swing.JComboBox<String> classroom_Field;
+    private javax.swing.JComboBox<Place> classroom_Field;
     private javax.swing.JLabel date;
     private javax.swing.JComboBox<String> day_Field;
     private javax.swing.JComboBox<String> endHour_Field;
     private javax.swing.JComboBox<String> endMinute_Field;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSlider jSlider1;
-    private javax.swing.JComboBox<String> professorName_Field;
+    private javax.swing.JComboBox<Professor> professorName_Field;
     private javax.swing.JComboBox<String> section_Field;
     private javax.swing.JTextField subjectName_Field;
     private javax.swing.JLabel to;

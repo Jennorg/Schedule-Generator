@@ -5,13 +5,11 @@ import Users.Person;
 public class Place {
     private String name;
     private boolean avaiable;
-    private Person inCharge;
     private int number;
 
-    public Place(String name, boolean avaiable, Person inCharge, int number) {
+    public Place(String name, boolean avaiable, int number) {
         this.name = name;
         this.avaiable = avaiable;
-        this.inCharge = inCharge;
         this.number = number;
     }
 
@@ -31,14 +29,6 @@ public class Place {
         this.avaiable = avaiable;
     }
 
-    public Person getInCharge() {
-        return inCharge;
-    }
-
-    public void setInCharge(Person inCharge) {
-        this.inCharge = inCharge;
-    }
-
     public int getNumber() {
         return number;
     }
@@ -47,5 +37,9 @@ public class Place {
         this.number = number;
     }
     
+    @Override
+    public String toString(){               
+        return (this.name + " " + this.number);
+    }
     
 }
