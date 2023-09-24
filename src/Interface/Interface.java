@@ -19,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Handler.Schedule;
 import java.time.format.DateTimeFormatter;
-import static java.time.temporal.TemporalQueries.localTime;
 import javax.swing.table.TableColumn;
 
 /**
@@ -47,20 +46,31 @@ public class Interface extends javax.swing.JFrame {
         String horaBuscada = reservation.getBeginTime().format(formatter);
 
         String diaBuscado = reservation.getDay();
-        String nuevoValor = reservation.toString();
-
+        Object nuevoValor = reservation.toString();
+        int auxiliar = 0;
+        
+//        if(reservation.diferenceBetewingTime() >= 4) auxiliar = 4;
+//        else if(reservation.diferenceBetewingTime() >= 3) auxiliar = 3;
+//        else if(reservation.diferenceBetewingTime() >= 2) auxiliar = 2;
+//        else if(reservation.diferenceBetewingTime() >= 1) auxiliar = 1;
+        
         for (int fila = 0; fila < modelo.getRowCount(); fila++) {
-            String horaEnTabla = (String) modelo.getValueAt(fila, 0);
-            String diaEnTabla = (String) modelo.getValueAt(fila, 1); 
-
-            if (horaEnTabla.equals(horaBuscada) && diaEnTabla.equals(diaBuscado)) {
+            for(int col = 0; col < modelo.getColumnCount(); col++) {
                 
-                modelo.setValueAt(nuevoValor, fila, 2); 
-                break;  
-           }
-        }
-    }
-    
+                String horaEnTabla = (String) modelo.getValueAt(fila, 0);
+                String diaEnTabla = (String) modelo.getColumnName(col);
+                if (horaEnTabla.equals(horaBuscada) && diaEnTabla.equals(diaBuscado)) {                   
+                    while(auxiliar>0){
+                        
+                        auxiliar--;
+                    }
+                    modelo.setValueAt(nuevoValor, fila, col); 
+                    modelo.fireTableDataChanged();
+                    break;                         
+               }
+            }
+        }        
+    }    
     /**
      * This method is called from within the
      * constructor to initialize the form.
@@ -347,12 +357,12 @@ public class Interface extends javax.swing.JFrame {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"7:00", null, null, null, null, null},
-                {"7:30", null, null, null, null, null},
-                {"8:00", null, null, null, null, null},
-                {"8:30", null, null, null, null, null},
-                {"9:00", null, null, null, null, null},
-                {"9:30", null, null, null, null, null},
+                {"07:00", null, null, null, null, null},
+                {"07:30", null, null, null, null, null},
+                {"08:00", null, null, null, null, null},
+                {"08:30", null, null, null, null, null},
+                {"09:00", null, null, null, null, null},
+                {"09:30", null, null, null, null, null},
                 {"10:00", null, null, null, null, null},
                 {"10:30", null, null, null, null, null},
                 {"11:00", null, null, null, null, null},

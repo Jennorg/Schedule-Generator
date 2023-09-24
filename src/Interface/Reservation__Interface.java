@@ -95,7 +95,7 @@ public class Reservation__Interface extends javax.swing.JFrame {
         Asignatura1 = new javax.swing.JLabel();
         carreraTittle2 = new javax.swing.JLabel();
         carreraTittle1 = new javax.swing.JLabel();
-        subject = new javax.swing.JComboBox<>();
+        subjectName_Field = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -309,10 +309,10 @@ public class Reservation__Interface extends javax.swing.JFrame {
         carreraTittle1.setForeground(new java.awt.Color(0, 0, 0));
         carreraTittle1.setText("Hora de inicio");
 
-        subject.setBackground(new java.awt.Color(255, 255, 255));
-        subject.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        subject.setForeground(new java.awt.Color(0, 102, 255));
-        subject.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        subjectName_Field.setBackground(new java.awt.Color(255, 255, 255));
+        subjectName_Field.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        subjectName_Field.setForeground(new java.awt.Color(0, 102, 255));
+        subjectName_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -331,34 +331,29 @@ public class Reservation__Interface extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(campus_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(120, 120, 120)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(section_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(beginHour_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(beginMinute_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(54, 54, 54)
-                                        .addComponent(endHour_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(endMinute_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE))
+                                .addComponent(campus_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(120, 120, 120)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(section_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(professorName_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Information1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(beginHour_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(beginMinute_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
+                                .addComponent(endHour_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(endMinute_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(professorName_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Information1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Information)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(date)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(day_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(subject, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(subjectName_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(classroom_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -381,7 +376,7 @@ public class Reservation__Interface extends javax.swing.JFrame {
                     .addComponent(Information))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(subject)
+                    .addComponent(subjectName_Field)
                     .addComponent(professorName_Field, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -421,26 +416,26 @@ public class Reservation__Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveButtonMouseExited
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
-//        int bHour = (int) beginHour_Field.getSelectedItem();
-//        int bMinute = (int) beginMinute_Field.getSelectedItem();
-//        int eHour = (int) endHour_Field.getSelectedItem();
-//        int eMinute = (int) endMinute_Field.getSelectedItem();
-//        
-//        Professor name = (Professor) professorName_Field.getSelectedItem();
-//        //String subject = (String) subject.getText();
-//        String day = (String) day_Field.getSelectedItem();
-//        String campus = (String) campus_Field.getSelectedItem();
-//        String section = (String) section_Field.getSelectedItem();
-//        Place classroom = (Place) classroom_Field.getSelectedItem();
-//        
-//        Reservation reservation = new Reservation(
-//            LocalTime.of(bHour, bMinute), 
-//            LocalTime.of(eHour, eMinute),
-//            classroom, name, campus, day, subject                
-//        );
-//        
-//        frame.schedule.addReservation(reservation);
-//        frame.showReserve(reservation);
+int bHour = (int) beginHour_Field.getSelectedItem();
+        int bMinute = (int) beginMinute_Field.getSelectedItem();
+        int eHour = (int) endHour_Field.getSelectedItem();
+        int eMinute = (int) endMinute_Field.getSelectedItem();
+        
+        Professor name = (Professor) professorName_Field.getSelectedItem();
+        String subject = (String) subjectName_Field.getSelectedItem();
+        String day = (String) day_Field.getSelectedItem();
+        String campus = (String) campus_Field.getSelectedItem();
+        String section = (String) section_Field.getSelectedItem();
+        Place classroom = (Place) classroom_Field.getSelectedItem();
+        
+        Reservation reservation = new Reservation(
+            LocalTime.of(bHour, bMinute), 
+            LocalTime.of(eHour, eMinute),
+            classroom, name, campus, day, subject, section                
+        );
+        
+        frame.schedule.addReservation(reservation);
+        frame.showReserve(reservation);
         this.dispose();
     }//GEN-LAST:event_SaveButtonActionPerformed
 
@@ -550,6 +545,6 @@ public class Reservation__Interface extends javax.swing.JFrame {
     private javax.swing.JSlider jSlider1;
     private javax.swing.JComboBox<Professor> professorName_Field;
     private javax.swing.JComboBox<String> section_Field;
-    private javax.swing.JComboBox<String> subject;
+    private javax.swing.JComboBox<String> subjectName_Field;
     // End of variables declaration//GEN-END:variables
 }
