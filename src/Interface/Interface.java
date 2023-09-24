@@ -7,6 +7,7 @@
 
 package Interface;
 
+import Handler.Reservation;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -17,6 +18,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Handler.Schedule;
+import java.time.format.DateTimeFormatter;
+import static java.time.temporal.TemporalQueries.localTime;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -31,8 +35,32 @@ public class Interface extends javax.swing.JFrame {
      */
     public Interface() {
         initComponents();
+        
+        TableColumn firstColumn = table.getColumnModel().getColumn(0);
+        firstColumn.setPreferredWidth(1);
+        
     }
 
+    public void showReserve(Reservation reservation) {
+        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String horaBuscada = reservation.getBeginTime().format(formatter);
+
+        String diaBuscado = reservation.getDay();
+        String nuevoValor = reservation.toString();
+
+        for (int fila = 0; fila < modelo.getRowCount(); fila++) {
+            String horaEnTabla = (String) modelo.getValueAt(fila, 0);
+            String diaEnTabla = (String) modelo.getValueAt(fila, 1); 
+
+            if (horaEnTabla.equals(horaBuscada) && diaEnTabla.equals(diaBuscado)) {
+                
+                modelo.setValueAt(nuevoValor, fila, 2); 
+                break;  
+           }
+        }
+    }
+    
     /**
      * This method is called from within the
      * constructor to initialize the form.
@@ -58,7 +86,7 @@ public class Interface extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -158,25 +186,39 @@ public class Interface extends javax.swing.JFrame {
         jButton2.setText("Iniciar Sesión");
 
         jScrollPane1.setBackground(new java.awt.Color(150, 245, 245));
+        jScrollPane1.setToolTipText("");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {"7:00", null, null, null, null, null},
+                {"7:30", null, null, null, null, null},
+                {"8:00", null, null, null, null, null},
+                {"8:30", null, null, null, null, null},
+                {"9:00", null, null, null, null, null},
+                {"9:30", null, null, null, null, null},
+                {"10:00", null, null, null, null, null},
+                {"10:30", null, null, null, null, null},
+                {"11:00", null, null, null, null, null},
+                {"11:30", null, null, null, null, null},
+                {"12:00", null, null, null, null, null},
+                {"12:30", null, null, null, null, null},
+                {"13:00", null, null, null, null, null},
+                {"13:30", null, null, null, null, null},
+                {"14:00", null, null, null, null, null},
+                {"14:30", null, null, null, null, null},
+                {"15:00", null, null, null, null, null},
+                {"15:30", null, null, null, null, null},
+                {"16:00", null, null, null, null, null},
+                {"16:30", null, null, null, null, null},
+                {"17:00", null, null, null, null, null},
+                {"17:30", null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+                "Hora", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        table.setRowSelectionAllowed(false);
+        jScrollPane1.setViewportView(table);
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton3.setText("Exportar");
@@ -219,7 +261,7 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(49, 49, 49)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 973, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
                         .addContainerGap(51, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -413,9 +455,7 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
     private javax.swing.JComboBox<String> LapsoAcademico;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton Reservar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -430,6 +470,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

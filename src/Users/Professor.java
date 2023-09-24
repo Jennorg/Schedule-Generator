@@ -21,5 +21,6 @@ public class Professor extends Person {
     public String toString(){
         return (getName() + " " + getLastName());
     }
+    
 }
 // Prueba git

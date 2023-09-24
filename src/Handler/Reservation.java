@@ -6,18 +6,40 @@ import java.time.LocalTime;
 public class Reservation {
     private LocalTime beginTime;
     private LocalTime endTime;
+    private String day;
+    private String subject;
     private Place place;
     private Professor professor;
     private String campus;
     
     //Constructor
-    public Reservation(LocalTime beginTime, LocalTime endTime, Place place, Professor professor, String campus) {
+    public Reservation(LocalTime beginTime, LocalTime endTime, Place place, Professor professor, String campus, String day, String subject) {
         
         this.beginTime = beginTime;
         this.endTime = endTime;
         this.place = place;
         this.professor = professor;
         this.campus = campus;
+        this.day = day;
+        this.subject = subject;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    
+    
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public LocalTime getBeginTime() {
@@ -69,5 +91,12 @@ public class Reservation {
         if(begin.isBefore(endTime) && begin.isAfter(beginTime)) return false;        
                 
         return true;
+    }
+    
+    @Override
+    public String toString() {
+        return (this.subject +
+                "\n" + this.professor.toString() +
+                "\n" + this.place.toString());
     }
 }
