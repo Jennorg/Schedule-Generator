@@ -47,18 +47,20 @@ public class Interface extends javax.swing.JFrame {
         String horaBuscada = reservation.getBeginTime().format(formatter);
 
         String diaBuscado = reservation.getDay();
-        String nuevoValor = reservation.toString();
-
+        Object nuevoValor = reservation.toString();
+        
         for (int fila = 0; fila < modelo.getRowCount(); fila++) {
-            String horaEnTabla = (String) modelo.getValueAt(fila, 0);
-            String diaEnTabla = (String) modelo.getValueAt(fila, 1); 
-
-            if (horaEnTabla.equals(horaBuscada) && diaEnTabla.equals(diaBuscado)) {
+            for(int col = 0; col < modelo.getColumnCount(); col++) {
                 
-                modelo.setValueAt(nuevoValor, fila, 2); 
-                break;  
-           }
-        }
+                String horaEnTabla = (String) modelo.getValueAt(fila, 0);
+                String diaEnTabla = (String) modelo.getColumnName(col);
+                if (horaEnTabla.equals(horaBuscada) && diaEnTabla.equals(diaBuscado)) {                    
+                    modelo.setValueAt(nuevoValor, fila, col); 
+                    modelo.fireTableDataChanged();
+                    break;                         
+               }
+            }
+        }        
     }
     
     /**
@@ -347,12 +349,12 @@ public class Interface extends javax.swing.JFrame {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"7:00", null, null, null, null, null},
-                {"7:30", null, null, null, null, null},
-                {"8:00", null, null, null, null, null},
-                {"8:30", null, null, null, null, null},
-                {"9:00", null, null, null, null, null},
-                {"9:30", null, null, null, null, null},
+                {"07:00", null, null, null, null, null},
+                {"07:30", null, null, null, null, null},
+                {"08:00", null, null, null, null, null},
+                {"08:30", null, null, null, null, null},
+                {"09:00", null, null, null, null, null},
+                {"09:30", null, null, null, null, null},
                 {"10:00", null, null, null, null, null},
                 {"10:30", null, null, null, null, null},
                 {"11:00", null, null, null, null, null},

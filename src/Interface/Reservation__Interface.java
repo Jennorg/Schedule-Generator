@@ -421,26 +421,27 @@ public class Reservation__Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveButtonMouseExited
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
-//        int bHour = (int) beginHour_Field.getSelectedItem();
-//        int bMinute = (int) beginMinute_Field.getSelectedItem();
-//        int eHour = (int) endHour_Field.getSelectedItem();
-//        int eMinute = (int) endMinute_Field.getSelectedItem();
-//        
-//        Professor name = (Professor) professorName_Field.getSelectedItem();
-//        //String subject = (String) subject.getText();
-//        String day = (String) day_Field.getSelectedItem();
-//        String campus = (String) campus_Field.getSelectedItem();
-//        String section = (String) section_Field.getSelectedItem();
-//        Place classroom = (Place) classroom_Field.getSelectedItem();
-//        
-//        Reservation reservation = new Reservation(
-//            LocalTime.of(bHour, bMinute), 
-//            LocalTime.of(eHour, eMinute),
-//            classroom, name, campus, day, subject                
-//        );
-//        
-//        frame.schedule.addReservation(reservation);
-//        frame.showReserve(reservation);
+        int bHour = (int) beginHour_Field.getSelectedItem();
+        int bMinute = (int) beginMinute_Field.getSelectedItem();
+        int eHour = (int) endHour_Field.getSelectedItem();
+        int eMinute = (int) endMinute_Field.getSelectedItem();
+        
+        Professor name = (Professor) professorName_Field.getSelectedItem();
+        String subject = (String) subjectName_Field.getText();
+        String day = (String) day_Field.getSelectedItem();
+        String campus = (String) campus_Field.getSelectedItem();
+        String section = (String) section_Field.getSelectedItem();
+        Place classroom = (Place) classroom_Field.getSelectedItem();
+        
+        Reservation reservation = new Reservation(
+            LocalTime.of(bHour, bMinute), 
+            LocalTime.of(eHour, eMinute),
+            classroom, name, campus, day, subject, section                
+        );
+        
+        frame.schedule.addReservation(reservation);
+        System.out.println(reservation.toString());
+        frame.showReserve(reservation);
         this.dispose();
     }//GEN-LAST:event_SaveButtonActionPerformed
 
