@@ -14,7 +14,7 @@ import Handler.Schedule;
  */
 public class Interface extends javax.swing.JFrame {
 
-    Schedule schedule;
+    Schedule schedule = new Schedule();
     
     /**
      * Creates new form Interface

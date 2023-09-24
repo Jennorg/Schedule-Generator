@@ -1,20 +1,28 @@
 package Handler;
 
+import java.util.ArrayList;
+
 public class Schedule {
-    private Reservation reservation[];
+    private ArrayList<Reservation> reservation;
     
     //Constructor
-    public Schedule(Reservation[] reservation) {
+    public Schedule(ArrayList<Reservation> reservation) {
         this.reservation = reservation;
     }
+    
+    public Schedule(){
+        reservation = new ArrayList<>();
+    }
 
-    public Reservation[] getReservation() {
+    public ArrayList<Reservation> getReservations() {
         return reservation;
     }
 
-    public void setReservation(Reservation[] reservation) {
+    public void setReservations(ArrayList<Reservation> reservation) {
         this.reservation = reservation;
     }
     
-    //Aqui los metodos para mostrar el horario
+    public void addReservation(Reservation reservation) {
+        this.reservation.add(reservation);
+    }
 }

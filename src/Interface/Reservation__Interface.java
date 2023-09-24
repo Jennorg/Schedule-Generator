@@ -7,6 +7,7 @@ package Interface;
 import Handler.Place;
 import Handler.Reservation;
 import Users.Professor;
+import java.time.LocalTime;
 import java.util.Arrays;
 import javax.swing.DefaultComboBoxModel;
 
@@ -243,7 +244,7 @@ public class Reservation__Interface extends javax.swing.JFrame {
         beginHour_Field.setBackground(new java.awt.Color(255, 255, 255));
         beginHour_Field.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         beginHour_Field.setForeground(new java.awt.Color(0, 0, 0));
-        beginHour_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
+        beginHour_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new Integer[] {1, 2 ,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24}));
         beginHour_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 beginHour_FieldActionPerformed(evt);
@@ -253,7 +254,7 @@ public class Reservation__Interface extends javax.swing.JFrame {
         beginMinute_Field.setBackground(new java.awt.Color(255, 255, 255));
         beginMinute_Field.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         beginMinute_Field.setForeground(new java.awt.Color(0, 0, 0));
-        beginMinute_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "15", "30", "45" }));
+        beginMinute_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new Integer[] {00, 15, 30, 45}));
         beginMinute_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 beginMinute_FieldActionPerformed(evt);
@@ -263,7 +264,7 @@ public class Reservation__Interface extends javax.swing.JFrame {
         endHour_Field.setBackground(new java.awt.Color(255, 255, 255));
         endHour_Field.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         endHour_Field.setForeground(new java.awt.Color(0, 0, 0));
-        endHour_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
+        endHour_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new Integer[] {1, 2 ,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24}));
         endHour_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 endHour_FieldActionPerformed(evt);
@@ -273,7 +274,7 @@ public class Reservation__Interface extends javax.swing.JFrame {
         endMinute_Field.setBackground(new java.awt.Color(255, 255, 255));
         endMinute_Field.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         endMinute_Field.setForeground(new java.awt.Color(0, 0, 0));
-        endMinute_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "15", "30", "45" }));
+        endMinute_Field.setModel(new javax.swing.DefaultComboBoxModel<>(new Integer[] {00, 15, 30, 45}));
         endMinute_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 endMinute_FieldActionPerformed(evt);
@@ -404,25 +405,24 @@ public class Reservation__Interface extends javax.swing.JFrame {
         int bHour = (int) beginHour_Field.getSelectedItem();
         int bMinute = (int) beginMinute_Field.getSelectedItem();
         int eHour = (int) endHour_Field.getSelectedItem();
-        int eMinuto = (int) endMinute_Field.getSelectedItem();
+        int eMinute = (int) endMinute_Field.getSelectedItem();
         
-        String name = (String) professorName_Field.getSelectedItem();
+        Professor name = (Professor) professorName_Field.getSelectedItem();
         String subject = (String) subjectName_Field.getText();
         String day = (String) day_Field.getSelectedItem();
         String campus = (String) campus_Field.getSelectedItem();
         String section = (String) section_Field.getSelectedItem();
-        String classroom = (String) classroom_Field.getSelectedItem();
+        Place classroom = (Place) classroom_Field.getSelectedItem();
         
+        Reservation reservation = new Reservation(
+            LocalTime.of(bHour, bMinute), 
+            LocalTime.of(eHour, eMinute),
+            classroom, name, campus                
+        );
         
+        frame.schedule.addReservation(reservation);
+        this.dispose();
     }//GEN-LAST:event_SaveButtonActionPerformed
-
-    private void XbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XbuttonMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_XbuttonMouseClicked
-
-    private void XbuttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XbuttonMouseEntered
-
-    }//GEN-LAST:event_XbuttonMouseEntered
 
     private void PanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMouseDragged
 
@@ -468,6 +468,14 @@ public class Reservation__Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_subjectName_FieldActionPerformed
 
+    private void XbuttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XbuttonMouseEntered
+
+    }//GEN-LAST:event_XbuttonMouseEntered
+
+    private void XbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XbuttonMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_XbuttonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -510,14 +518,14 @@ public class Reservation__Interface extends javax.swing.JFrame {
     private javax.swing.JPanel Panel;
     private javax.swing.JButton SaveButton;
     private javax.swing.JLabel Xbutton;
-    private javax.swing.JComboBox<String> beginHour_Field;
-    private javax.swing.JComboBox<String> beginMinute_Field;
+    private javax.swing.JComboBox<Integer> beginHour_Field;
+    private javax.swing.JComboBox<Integer> beginMinute_Field;
     private javax.swing.JComboBox<String> campus_Field;
     private javax.swing.JComboBox<Place> classroom_Field;
     private javax.swing.JLabel date;
     private javax.swing.JComboBox<String> day_Field;
-    private javax.swing.JComboBox<String> endHour_Field;
-    private javax.swing.JComboBox<String> endMinute_Field;
+    private javax.swing.JComboBox<Integer> endHour_Field;
+    private javax.swing.JComboBox<Integer> endMinute_Field;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSlider jSlider1;
