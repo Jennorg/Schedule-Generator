@@ -76,9 +76,9 @@ public class Interface extends javax.swing.JFrame {
         Background = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        Secciones = new javax.swing.JComboBox<>();
         jComboBox5 = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Semestre = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         LapsoAcademico = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -108,14 +108,14 @@ public class Interface extends javax.swing.JFrame {
         jButton2.setText("Iniciar Sesión");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jComboBox2.setBackground(java.awt.Color.white);
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(0, 71, 179));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sección 1", "+ Añadir Sección" }));
-        jComboBox2.setName("Semestres"); // NOI18N
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        Secciones.setBackground(java.awt.Color.white);
+        Secciones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Secciones.setForeground(new java.awt.Color(0, 71, 179));
+        Secciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sección 1", "+ Añadir Sección" }));
+        Secciones.setName("Semestres"); // NOI18N
+        Secciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                SeccionesActionPerformed(evt);
             }
         });
 
@@ -130,14 +130,14 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setBackground(java.awt.Color.white);
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 71, 179));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre 1", "Semestre 2", "Semestre 3", "Semestre 4" }));
-        jComboBox1.setName("Semestres"); // NOI18N
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        Semestre.setBackground(java.awt.Color.white);
+        Semestre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Semestre.setForeground(new java.awt.Color(0, 71, 179));
+        Semestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre 1", "Semestre 2", "Semestre 3", "Semestre 4" }));
+        Semestre.setName("Semestres"); // NOI18N
+        Semestre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                SemestreActionPerformed(evt);
             }
         });
 
@@ -185,11 +185,11 @@ public class Interface extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(LapsoAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Semestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addComponent(jButton2)
                 .addGap(26, 26, 26))
@@ -206,9 +206,9 @@ public class Interface extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Semestre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LapsoAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -394,9 +394,35 @@ public class Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void SemestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SemestreActionPerformed
+        try{
+            if (Semestre.getSelectedItem().equals("Semestre 1"))
+        {
+            Secciones.removeAllItems();
+            Secciones.setSelectedItem(null);
+            Secciones.addItem("Seccion 1");
+            Secciones.addItem("Seccion 2");
+            Secciones.addItem("Seccion 3");
+            Secciones.addItem("Seccion 4");
+            Secciones.addItem("Seccion 5");
+            Secciones.addItem("+ Añadir Sección");
+        }
+        else
+        if (Semestre.getSelectedItem().equals("Semestre 2")){
+            
+            Secciones.removeAllItems();
+            Secciones.setSelectedItem(null);
+            Secciones.addItem("Seccion 1");
+            Secciones.addItem("Seccion 2");
+            Secciones.addItem("Seccion 3");
+            Secciones.addItem("+ Añadir Sección");
+            
+        }
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_SemestreActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
@@ -414,10 +440,10 @@ public class Interface extends javax.swing.JFrame {
             
             if (opcion == JOptionPane.YES_OPTION){
                 
-                DefaultComboBoxModel<String> modeloComboBox = (DefaultComboBoxModel<String>) jComboBox2.getModel();
+                DefaultComboBoxModel<String> modeloComboBox = (DefaultComboBoxModel<String>) Secciones.getModel();
                 
                 for(int i = 0; i < modeloComboBox.getSize();i++){
-                   jComboBox2.removeItemAt(i);
+                   Secciones.removeItemAt(i);
                 }
                 
                 String nuevaOpcion = "Lapso "+(JOptionPane.showInputDialog(this,"Ingrese el año y número del siguiente Lapso\n\"2023-I\", \"2024-II\" "));
@@ -448,9 +474,9 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox5ActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void SeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeccionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_SeccionesActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
@@ -500,6 +526,7 @@ public class Interface extends javax.swing.JFrame {
             
             // Guarda la imagen en un archivo con el nombre generado
             File outputFile = new File(filename);
+            JOptionPane.showMessageDialog(this, "El horario ha sido exportado con éxito!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             ImageIO.write(screenshot, "png", outputFile);
         } catch (Exception ex){
             ex.printStackTrace();
@@ -546,14 +573,14 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JPanel Background;
     private javax.swing.JComboBox<String> LapsoAcademico;
     private javax.swing.JButton Reservar;
+    private javax.swing.JComboBox<String> Secciones;
+    private javax.swing.JComboBox<String> Semestre;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;

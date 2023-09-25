@@ -70,11 +70,11 @@
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="LapsoAcademico" min="-2" pref="130" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <Component id="Semestre" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jComboBox5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                      <Component id="Secciones" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -94,9 +94,9 @@
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jButton2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="jComboBox2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="Secciones" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="jComboBox5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="Semestre" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="jComboBox3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="LapsoAcademico" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
@@ -131,7 +131,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox2">
+            <Component class="javax.swing.JComboBox" name="Secciones">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
@@ -151,7 +151,7 @@
                 <Property name="name" type="java.lang.String" value="Semestres" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SeccionesActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -182,7 +182,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="Semestre">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
@@ -204,7 +204,7 @@
                 <Property name="name" type="java.lang.String" value="Semestres" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SemestreActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
