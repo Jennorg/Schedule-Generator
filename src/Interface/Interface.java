@@ -39,37 +39,28 @@ public class Interface extends javax.swing.JFrame {
         firstColumn.setPreferredWidth(1);
         
     }
-
+    
     public void showReserve(Reservation reservation) {
         DefaultTableModel modelo = (DefaultTableModel) table.getModel();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         String horaBuscada = reservation.getBeginTime().format(formatter);
 
         String diaBuscado = reservation.getDay();
-        Object nuevoValor = reservation.toString();
-        int auxiliar = 0;
-        
-//        if(reservation.diferenceBetewingTime() >= 4) auxiliar = 4;
-//        else if(reservation.diferenceBetewingTime() >= 3) auxiliar = 3;
-//        else if(reservation.diferenceBetewingTime() >= 2) auxiliar = 2;
-//        else if(reservation.diferenceBetewingTime() >= 1) auxiliar = 1;
+        Object nuevoValor = reservation.toString();      
         
         for (int fila = 0; fila < modelo.getRowCount(); fila++) {
-            for(int col = 0; col < modelo.getColumnCount(); col++) {
-                
+            for (int col = 0; col < modelo.getColumnCount(); col++) {
                 String horaEnTabla = (String) modelo.getValueAt(fila, 0);
                 String diaEnTabla = (String) modelo.getColumnName(col);
+
                 if (horaEnTabla.equals(horaBuscada) && diaEnTabla.equals(diaBuscado)) {                   
-                    while(auxiliar>0){
-                        
-                        auxiliar--;
-                    }
-                    modelo.setValueAt(nuevoValor, fila, col); 
+                    modelo.setValueAt(nuevoValor, fila, col);
+
                     modelo.fireTableDataChanged();
-                    break;                         
-               }
+                    break;
+                }
             }
-        }        
+        } 
     }    
     /**
      * This method is called from within the
