@@ -507,6 +507,41 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f5" green="f5" red="96" type="rgb"/>
+<<<<<<< HEAD
+=======
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="6" rowCount="22">
+                <Column editable="true" title="Hora" type="java.lang.Object">
+                  <Data value="07:00"/>
+                  <Data value="07:30"/>
+                  <Data value="08:00"/>
+                  <Data value="08:30"/>
+                  <Data value="09:00"/>
+                  <Data value="09:30"/>
+                  <Data value="10:00"/>
+                  <Data value="10:30"/>
+                  <Data value="11:00"/>
+                  <Data value="11:30"/>
+                  <Data value="12:00"/>
+                  <Data value="12:30"/>
+                  <Data value="13:00"/>
+                  <Data value="13:30"/>
+                  <Data value="14:00"/>
+                  <Data value="14:30"/>
+                  <Data value="15:00"/>
+                  <Data value="15:30"/>
+                  <Data value="16:00"/>
+                  <Data value="16:30"/>
+                  <Data value="17:00"/>
+                  <Data value="17:30"/>
+                </Column>
+                <Column editable="true" title="Lunes" type="java.lang.Object"/>
+                <Column editable="true" title="Martes" type="java.lang.Object"/>
+                <Column editable="true" title="Miercoles" type="java.lang.Object"/>
+                <Column editable="true" title="Jueves" type="java.lang.Object"/>
+                <Column editable="true" title="Viernes" type="java.lang.Object"/>
+              </Table>
+>>>>>>> 32879a14199241e08a944dfc20d96e9e2d5cecac
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
