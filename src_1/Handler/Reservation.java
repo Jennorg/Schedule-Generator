@@ -2,18 +2,23 @@ package Handler;
 
 import Users.Professor;
 import java.time.LocalTime;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
-public class Reservation {
+public class Reservation implements Serializable{
     private LocalTime beginTime;
     private LocalTime endTime;
     private String day;
     private String subject;
     private Place place;
+    private String section;
     private Professor professor;
     private String campus;
     
     //Constructor
-    public Reservation(LocalTime beginTime, LocalTime endTime, Place place, Professor professor, String campus, String day, String subject) {
+    public Reservation(LocalTime beginTime, LocalTime endTime, Place place, Professor professor, String campus, String day, String subject, String section) {
         
         this.beginTime = beginTime;
         this.endTime = endTime;
@@ -22,8 +27,17 @@ public class Reservation {
         this.campus = campus;
         this.day = day;
         this.subject = subject;
+        this.section = section;
     }
 
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+    
     public String getSubject() {
         return subject;
     }
@@ -31,8 +45,6 @@ public class Reservation {
     public void setSubject(String subject) {
         this.subject = subject;
     }
-
-    
     
     public String getDay() {
         return day;
@@ -93,10 +105,17 @@ public class Reservation {
         return true;
     }
     
+<<<<<<< HEAD
+    
+   
+
+=======
     @Override
     public String toString() {
-        return (this.subject +
+        return (this.subject + 
+                "\nseccion " + this.section +
                 "\n" + this.professor.toString() +
                 "\n" + this.place.toString());
     }
+>>>>>>> 3e382355926cf5bce371fde28d41ffe433d1116b
 }
