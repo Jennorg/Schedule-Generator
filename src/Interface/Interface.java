@@ -498,6 +498,8 @@ public class Interface extends javax.swing.JFrame {
     private void ReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservarActionPerformed
         Reservation__Interface reservationFrame = new Reservation__Interface(this);
         reservationFrame.setVisible(true);
+        
+        
     }//GEN-LAST:event_ReservarActionPerformed
 
     private void ReservarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReservarMouseClicked
@@ -528,6 +530,8 @@ public class Interface extends javax.swing.JFrame {
             // Guarda la imagen en un archivo con el nombre generado
             File outputFile = new File(filename);
             ImageIO.write(screenshot, "png", outputFile);
+            JOptionPane.showMessageDialog(this, "El horario ha sido exportado con éxito!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            
         } catch (Exception ex){
             ex.printStackTrace();
         }
