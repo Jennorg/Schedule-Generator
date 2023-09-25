@@ -85,9 +85,6 @@ a tener una busqueda facil de una de estas opciones en el horario.
 - Menu primero donde tenga toda la info del profe, los salones y salir
 
   - Meter los salones que sean vectores. Hay que checkear si se puede
-    utilizar listas enlazadas o pilas para que se elimine
-    salon planificado a tal profesor y no venga otro cara de mondae
-    a colocar lo mismo a la misma hora...
 
 - Visualizar los salones como un array, luego vincularlos con un horario
   y fecha con un time.h de java,
